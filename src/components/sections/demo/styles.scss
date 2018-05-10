@@ -1,0 +1,89 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/mixins/responsive';
+@import '../../fields/button';
+
+.block {
+  position: relative;
+  background-color: $color-accent-dark;
+  color: $color-text-accent;
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    background-color: $color-white;
+  }
+}
+
+.subTitle {
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  @include respond-from(md) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.text {
+  text-align: center;
+
+  @include respond-from(md) {
+    flex: 0 1 auto;
+    text-align: left;
+  }
+}
+
+.form {
+  @include respond-from(md) {
+    flex: 0 1 auto;
+    margin-left: 50px;
+  }
+}
+
+.done {
+  composes: root;
+
+  margin-top: 50px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include respond-from(md) {
+    margin-top: 0;
+    width: auto;
+  }
+}
+
+.field {
+  margin-top: 50px;
+  white-space: nowrap;
+
+  @include respond-from(md) {
+    margin-top: 0;
+  }
+}
+
+.input {
+  border-bottom-color: $color-white;
+  width: 100%;
+
+  @include respond-from(md) {
+    width: 140px;
+  }
+}
+
+.button {
+  display: block;
+  width: 100%;
+
+  @include respond-from(md) {
+    display: inline-block;
+    margin-left: 5px;
+    width: auto;
+  }
+}

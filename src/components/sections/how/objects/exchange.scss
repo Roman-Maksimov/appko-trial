@@ -1,0 +1,325 @@
+@import '../../../../styles/settings/animation';
+@import '../../../../styles/settings/colors';
+@import '../../../../styles/settings/typography';
+@import '../keyframes/exchange';
+
+$width: 60px;
+$height: 60px;
+$depth: 5px;
+$border-radius: 10px;
+$side-width: $width - $border-radius - 3;
+
+$orbit-width: 120px;
+$orbit-height: 120px;
+
+.root {
+  position: relative;
+  transform: perspective(300px) rotate3d(4, 1, -2, 60deg);
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  margin-left: 10px;
+  width: 2 * $depth + $width;
+}
+
+
+// PLATFORM
+
+.platform {
+  @include transition(transform);
+
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 2 * $depth + $width;
+  transform-style: preserve-3d;
+}
+
+.side {
+  background-color: $color-accent;
+  box-sizing: border-box;
+}
+
+.top {
+  composes: side;
+
+  transform: rotateX(90deg);
+  transform-origin: 0 100%;
+  margin: 0 ($depth + ($width - $side-width) / 2);
+  width: $side-width;
+  height: $depth;
+}
+
+.left {
+  composes: side;
+
+  transform: rotateY(-90deg);
+  transform-origin: 100% 0;
+  width: $depth;
+  height: $side-width;
+}
+
+.front {
+  composes: side;
+
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 1;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  background-color: $color-background;
+  padding: 5px;
+  width: $width;
+  height: $height;
+  color: $color-accent;
+  font-size: $font-size-small;
+  font-weight: 900;
+  transform-style: preserve-3d;
+}
+
+.back {
+  composes: side;
+
+  position: absolute;
+  top: $depth;
+  left: $depth;
+  transform: translate3d(0, 0, -$depth);
+  border-radius: $border-radius;
+  width: $width;
+  height: $height;
+  overflow: hidden;
+
+  &::before {
+    position: absolute;
+    left: -50px;
+    animation: exchange-flash 1s $timing-function infinite;
+    background: linear-gradient(to right, rgba($color-accent-light, 0) 0%, $color-accent-light 50%, rgba($color-accent-light, 0) 100%);
+    width: 50px;
+    height: 100%;
+    content: '';
+  }
+}
+
+.right {
+  composes: side;
+
+  transform: rotateY(90deg);
+  transform-origin: 0 0;
+  width: $depth;
+  height: $side-width;
+}
+
+.bottom {
+  composes: side;
+
+  transform: rotateX(-90deg);
+  transform-origin: 0 0;
+  margin: 0 ($depth + ($width - $side-width) / 2);
+  width: $side-width;
+  height: $depth;
+}
+
+
+// BARS
+
+.bars {
+  display: flex;
+  position: absolute;
+  bottom: 50%;
+  align-items: flex-end;
+  justify-content: center;
+  transform: rotateX(-90deg);
+  transform-origin: 0 100%;
+  width: 100%;
+}
+
+.bar {
+  @include transition(transform);
+
+  flex: 0 0 auto;
+  transform: scaleY(0);
+  transform-origin: 0 100%;
+  animation: exchange-bar 1s linear infinite $duration;
+  margin: 0 1px;
+  box-shadow: -1px -1px 1px $color-primary-light;
+  background-color: $color-accent;
+  width: 5px;
+  height: 10px;
+
+  &:nth-child(2) {
+    animation-delay: $duration + .2s;
+    height: 8px;
+  }
+
+  &:nth-child(3) {
+    animation-delay: $duration + .4s;
+    height: 12px;
+  }
+
+  &:nth-child(4) {
+    animation-delay: $duration + .6s;
+    height: 8px;
+  }
+}
+
+.barsActive {
+  composes: bars;
+
+  .bar {
+    transform: scaleY(1);
+  }
+}
+
+// USERS
+
+$k-inactive: 3;
+
+.users {
+  @include transition(width, height, margin-top, margin-left, opacity);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: exchange-users-rotate 30s linear infinite;
+  opacity: 0;
+  margin-top: -$k-inactive * $orbit-width / 2;
+  margin-left: -$k-inactive * $orbit-height / 2;
+  width: $k-inactive * $orbit-width;
+  height: $k-inactive * $orbit-height;
+
+  &::before {
+    @include transition(border-color);
+
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    border: 2px solid $color-accent;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    content: '';
+  }
+}
+
+$user-width: 15px;
+$user-height: 10px;
+$user-margin: 15px;
+
+.user {
+  @include transition(transform-origin, background-color);
+
+  position: absolute;
+  top: -$user-height - $user-margin;
+  left: 50%;
+  margin-left: -$user-width / 2;
+  border-top-left-radius: $user-height;
+  border-top-right-radius: $user-height;
+  background-color: $color-accent;
+  width: $user-width;
+  height: $user-height;
+
+  &::before {
+    @include transition(background-color);
+
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    margin-left: -5px;
+    border-radius: 50%;
+    background-color: $color-accent;
+    width: 10px;
+    height: 10px;
+    content: '';
+  }
+
+  .userLine {
+    @include transition(background-color);
+
+    position: absolute;
+    top: $user-height + 2px;
+    left: 50%;
+    margin-left: -1px;
+    background-color: $color-accent;
+    width: 2px;
+    height: $user-margin - 2px;
+    overflow: hidden;
+
+    &::before {
+      @include transition(background-color);
+
+      position: absolute;
+      top: -5px;
+      animation: exchange-user-line-flash 1s $timing-function infinite;
+      background: linear-gradient(to right, rgba($color-accent-light, 0) 0%, $color-accent-light 50%, rgba($color-accent-light, 0) 100%);
+      width: 100%;
+      height: 5px;
+      content: '';
+    }
+  }
+
+  &:nth-child(2) {
+    transform: rotate(120deg);
+    transform-origin: 50% (($k-inactive * $orbit-width + 2 * $user-margin) / 2 + $user-height) - 1;
+  }
+
+  &:nth-child(3) {
+    transform: rotate(-120deg);
+    transform-origin: 50% (($k-inactive * $orbit-width + 2 * $user-margin) / 2 + $user-height);
+  }
+}
+
+.usersActive {
+  composes: users;
+
+  transition-delay: $duration;
+  opacity: 1;
+  margin-top: -$orbit-width / 2;
+  margin-left: -$orbit-height / 2;
+  width: $orbit-width;
+  height: $orbit-height;
+
+  .user {
+    &:nth-child(2) {
+      transform-origin: 50% (($orbit-width + 2 * $user-margin) / 2 + $user-height) - 1;
+    }
+
+    &:nth-child(3) {
+      transform-origin: 50% (($orbit-width + 2 * $user-margin) / 2 + $user-height);
+    }
+  }
+}
+
+
+// HOVER
+
+.hover:hover {
+  .platform {
+    transform: translateZ(3px);
+  }
+
+  .users {
+    &::before {
+      border-color: $color-accent-light;
+    }
+  }
+
+  .user {
+    background-color: $color-accent-light;
+
+    &::before {
+      background-color: $color-accent-light;
+    }
+  }
+
+  .userLine {
+    background-color: $color-accent-light;
+
+    &::before {
+      background: linear-gradient(to right, rgba($color-accent, 0) 0%, $color-accent 50%, rgba($color-accent, 0) 100%);
+    }
+  }
+}

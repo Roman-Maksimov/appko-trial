@@ -1,0 +1,227 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/animation';
+@import '../../../styles/mixins/responsive';
+
+.block {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 -20px 20px $color-primary;
+  background: linear-gradient(to bottom, $color-primary 0%, $color-primary-light 100%);
+  color: $color-text-accent;
+}
+
+.content {
+  font-size: $font-size-small-title;
+
+  @include respond-from(md) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.text {
+  flex: 1 1 50%;
+  line-height: 1.7;
+  font-weight: 100;
+
+  p:nth-child(even) {
+    color: $color-accent-light;
+  }
+}
+
+.canvas {
+  flex: 0 1 50%;
+  padding: 50px 0;
+
+  @include respond-from(md) {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+
+// Video
+
+.scene {
+  position: relative;
+  margin: auto;
+  width: 100%;
+
+  @include respond-from(lg) {
+    width: 400px;
+  }
+}
+
+.arrow {
+  @include transition(transform, border-color);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(.8);
+  z-index: 1;
+  margin-top: -30px;
+  margin-left: -30px;
+  border: 1px solid $color-accent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+
+  &::before {
+    @include transition(border-left-color);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    margin-left: -9px;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid $color-accent;
+    width: 0;
+    content: '';
+  }
+
+  &:hover {
+    border-color: $color-accent-light;
+
+    &::before {
+      border-left-color: $color-accent-light;
+    }
+  }
+}
+
+.video {
+  @include transition(border-color);
+
+  position: relative;
+  margin: auto;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  cursor: pointer;
+  padding-top: 47%;
+  width: 100%;
+
+  &::before {
+    @include transition(width, height);
+
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    border-top: 1px solid $color-accent;
+    border-left: 1px solid $color-accent;
+    width: 32px;
+    height: 18px;
+    content: '';
+  }
+
+  &::after {
+    @include transition(width, height);
+
+    position: absolute;
+    right: -1px;
+    bottom: -1px;
+    border-right: 1px solid $color-accent;
+    border-bottom: 1px solid $color-accent;
+    width: 32px;
+    height: 18px;
+    content: '';
+  }
+
+  &:hover {
+    border-color: $color-accent;
+
+    &::before,
+    &::after {
+      width: 100%;
+      height: 100%;
+    }
+
+    .arrow {
+      transform: scale(1);
+    }
+  }
+}
+
+// Spinner
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.3);
+  }
+
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.spinner {
+  position: relative;
+  animation: spinner 30s linear infinite 1s;
+  margin: auto;
+  width: 250px;
+  height: 250px;
+}
+
+.center {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  border: 1px solid $color-accent-light;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.satellite {
+  position: absolute;
+  border: 1px solid $color-accent-light;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  color: $color-text-accent;
+  font-size: $font-size-small;
+  box-sizing: border-box;
+
+  &::before {
+    position: absolute;
+    bottom: -21px;
+    left: 40px;
+    background-color: $color-accent-light;
+    width: 1px;
+    height: 21px;
+    content: '';
+  }
+}
+
+.top {
+  composes: satellite;
+
+  top: 0;
+  left: 85px;
+}
+
+.left {
+  composes: satellite;
+
+  bottom: 42.5px;
+  left: 11.39px;
+  transform: rotate(-120deg);
+}
+
+.right {
+  composes: satellite;
+
+  right: 11.39px;
+  bottom: 42.5px;
+  transform: rotate(120deg);
+}

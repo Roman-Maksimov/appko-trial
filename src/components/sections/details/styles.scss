@@ -1,0 +1,121 @@
+@import '../../../styles/settings/animation';
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/responsive';
+
+$chart-size-sm: 230px;
+$chart-size-lg: 300px;
+
+.block {
+  padding: 0;
+}
+
+.content {
+  @include respond-from(md) {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+}
+
+.part {
+  position: relative;
+  padding: 20px 0 50px;
+  min-width: $chart-size-sm;
+  min-height: $chart-size-sm;
+  text-align: center;
+
+  @include respond-from(md) {
+    flex: 1 1 1px;
+  }
+
+  @include respond-from(lg) {
+    padding: 50px;
+    min-width: $chart-size-lg;
+    min-height: $chart-size-lg;
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-family: $font-stack-title;
+  font-weight: 600;
+}
+
+.tokens {
+  composes: part;
+}
+
+.funds {
+  composes: part;
+
+  @include respond-from(md) {
+    order: 1;
+  }
+}
+
+.description {
+  composes: part;
+
+  background-color: $color-accent;
+  color: $color-text-accent;
+}
+
+.table {
+  width: 100%;
+
+  tr td {
+    padding: 10px;
+    width: 50%;
+    vertical-align: top;
+    font-size: $font-size-small;
+
+    @include respond-from(lg) {
+      font-size: $font-size;
+    }
+
+    &:first-child {
+      border-right: 1px solid $color-white;
+      text-align: right;
+    }
+
+    &:last-child {
+      text-align: left;
+      font-weight: 600;
+    }
+  }
+}
+
+.buffer {
+  opacity: 0;
+}
+
+.chart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -$chart-size-sm / 2 + 20px;
+  margin-left: -$chart-size-sm / 2;
+  width: $chart-size-sm;
+  height: $chart-size-sm;
+
+  @include respond-from(lg) {
+    margin-top: -$chart-size-lg / 2 + 30px;
+    margin-left: -$chart-size-lg / 2;
+    width: $chart-size-lg;
+    height: $chart-size-lg;
+  }
+}
+
+.chartLabelItem {
+  margin: 3px 0;
+  max-width: 140px;
+  font-size: $font-size-small;
+
+  @include respond-from(lg) {
+    max-width: 210px;
+    font-size: $font-size;
+  }
+}

@@ -1,0 +1,31 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/animation';
+@import '../../../styles/mixins/responsive';
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  color: $color-text;
+  font-family: $font-stack;
+  font-size: 16px;
+}
+
+.titleHighlighted {
+  color: $color-primary;
+}
+
+.content {
+  opacity: 0;
+}
+
+.contentActive {
+  @include transition(opacity);
+
+  composes: content;
+  opacity: 1;
+}

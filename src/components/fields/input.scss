@@ -1,0 +1,109 @@
+@import '../../styles/settings/colors';
+@import '../../styles/settings/typography';
+@import '../../styles/mixins/animation';
+
+$padding: 5px;
+
+.root {
+  @include transition(border-bottom-color);
+
+  display: inline-block;
+  position: relative;
+  margin: 20px 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $color-border;
+  padding: 0 $padding;
+  width: 300px;
+  height: 30px;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.label {
+  @include transition(top, left, font-size, color);
+
+  position: absolute;
+  top: $padding;
+  left: $padding;
+  z-index: 0;
+  color: $color-text-second;
+  font-size: $font-size;
+}
+
+.input {
+  position: relative;
+  z-index: 1;
+  outline: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+  color: $color-text;
+  font-size: $font-size;
+}
+
+.bar {
+  @include transition(left, width, background-color);
+
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  margin: auto;
+  background-color: $color-accent;
+  width: 0;
+  height: 2px;
+}
+
+.errorText {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  color: $color-error;
+  font-size: $font-size-small;
+}
+
+.input:focus ~ .bar {
+  left: 0;
+  background-color: $color-accent;
+  width: 100%;
+}
+
+.labelActive {
+  composes: label;
+
+  top: -15px;
+  left: 0;
+  color: $color-accent;
+  font-size: $font-size-small;
+}
+
+.input:focus ~ .label {
+  top: -15px;
+  left: 0;
+  color: $color-accent;
+  font-size: $font-size-small;
+}
+
+.rootAccent {
+  composes: root;
+  border-bottom-color: $color-primary-light;
+
+  .input {
+    color: $color-text-accent;
+  }
+}
+
+.error {
+  border-bottom-color: $color-error;
+
+  .label {
+    color: $color-error;
+  }
+
+  .bar {
+    background-color: $color-error;
+  }
+}

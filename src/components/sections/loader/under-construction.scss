@@ -1,0 +1,25 @@
+@import '../styles';
+
+.warn {
+  position: relative;
+  transform: scaleX(0);
+  margin-top: 20px;
+  background: $color-white;
+  padding: 0 5px;
+  color: $color-primary;
+  font-size: 16px;
+  font-weight: 600;
+
+  @include respond-from(md) {
+    margin-top: 50px;
+    font-size: 32px;
+  }
+}
+
+.warnActive {
+  composes: warn;
+
+  transform: scaleX(1);
+  transition: transform .5s ease;
+}
+

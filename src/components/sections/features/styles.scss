@@ -1,0 +1,63 @@
+@import '../../../styles/settings/animation';
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/responsive';
+
+$size-sm: 30px;
+$size-md: 50px;
+$padding: 10px;
+
+.block {
+  flex: 1 1 50%;
+  background-color: $color-background;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 960px;
+}
+
+.item {
+  position: relative;
+  flex: 0 1 auto;
+  margin: 30px 0;
+  padding-left: 40px;
+  text-align: justify;
+  box-sizing: border-box;
+
+  @include respond-from(md) {
+    flex-basis: 40%;
+    margin-right: 20px;
+    padding-left: 60px;
+  }
+}
+
+.icon {
+  composes: material-icons from global;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: $color-accent;
+  font-size: $size-sm;
+
+  @include respond-from(md) {
+    font-size: $size-md;
+  }
+}
+
+.title {
+  margin-bottom: 10px;
+  text-align: left;
+  color: $color-accent;
+  font-family: $font-stack-title;
+  font-weight: 600;
+}
+
+.button {
+  margin-top: 20px;
+}

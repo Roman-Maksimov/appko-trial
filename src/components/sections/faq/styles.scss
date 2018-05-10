@@ -1,0 +1,78 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/responsive';
+@import '../../../styles/mixins/animation';
+
+.block {
+  background-color: $color-primary-light;
+  color: $color-text-accent;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 960px;
+}
+
+.issue {
+  flex: 0 1 auto;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include respond-from(md) {
+    margin-bottom: 50px;
+    width: 50%;
+
+    &:nth-child(odd) {
+      padding-right: 50px;
+    }
+  }
+}
+
+.question {
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-family: $font-stack-title;
+  font-size: $font-size-small-title;
+
+  @include respond-from(md) {
+    cursor: auto;
+    font-size: $font-size-title;
+  }
+}
+
+.answer {
+  @include transition(max-height, padding-bottom);
+
+  margin-bottom: 20px;
+  border-bottom: 1px solid $color-accent;
+  padding-bottom: 0;
+  max-height: 0;
+  overflow: hidden;
+  color: $color-accent-light;
+  font-size: $font-size-small;
+
+  @include respond-from(md) {
+    margin-bottom: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+    padding-left: 20px;
+    max-height: none;
+    font-size: $font-size;
+  }
+}
+
+.answerActive {
+  composes: answer;
+
+  padding-bottom: 20px;
+  max-height: 150px;
+
+  @include respond-from(md) {
+    padding-bottom: 0;
+    max-height: none;
+  }
+}

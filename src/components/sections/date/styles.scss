@@ -1,0 +1,300 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/animation';
+@import '../../../styles/mixins/responsive';
+
+.block {
+  padding: 0;
+}
+
+.title {
+  text-align: right;
+  color: $color-accent;
+}
+
+.content {
+  @include respond-from(md) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-accent;
+  padding: 20px;
+  text-align: center;
+  color: $color-text-accent;
+
+  @include respond-from(md) {
+    flex: 1 1 70%;
+    padding: 150px 20px;
+  }
+}
+
+.started {
+  composes: timer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 26px;
+  font-weight: 200;
+
+  @include respond-from(lg) {
+    font-size: 40px;
+  }
+}
+
+.part {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.number {
+  width: 60px;
+  text-align: left;
+  font-size: 30px;
+  font-weight: 900;
+
+  @include respond-from(md) {
+    width: 125px;
+    font-size: 80px;
+  }
+
+  span {
+    vertical-align: middle;
+  }
+
+  &::before {
+    margin-right: 8px;
+    vertical-align: middle;
+    font-size: 20px;
+    content: ':';
+
+    @include respond-from(md) {
+      margin-right: 15px;
+      font-size: 50px;
+    }
+  }
+}
+
+.label {
+  padding-left: 5px;
+  width: 60px;
+  font-size: 10px;
+  box-sizing: border-box;
+
+  @include respond-from(md) {
+    padding-left: 15px;
+    width: 125px;
+    font-size: 18px;
+  }
+}
+
+.part:first-child {
+  .number {
+    margin-right: 15px;
+    width: auto;
+
+    &::before {
+      margin: 0;
+      content: none;
+    }
+  }
+
+  .label {
+    margin-right: 15px;
+    padding-left: 0;
+    width: auto;
+  }
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 10px;
+  color: $color-text-second;
+  font-size: 20px;
+
+  @include respond-from(md) {
+    flex: 1 1 30%;
+  }
+}
+
+.eventTitle {
+  text-align: center;
+  text-transform: uppercase;
+  color: $color-text;
+  font-family: $font-stack-title;
+  font-weight: 600;
+}
+
+.eventDescription {
+  margin: 20px 0 50px;
+  text-align: center;
+}
+
+.icon {
+  composes: material-icons from global;
+
+  color: $color-accent;
+  font-size: 50px;
+}
+
+.when {
+  margin: 30px 0;
+  color: $color-text;
+  font-size: $font-size-title;
+  font-weight: 600;
+}
+
+.date {
+  @include transition(font-size, font-weight, color);
+
+  color: $color-text-second;
+  font-size: $font-size;
+  font-weight: 400;
+}
+
+.dateActive {
+  composes: date;
+
+  color: $color-accent;
+  font-size: $font-size-title;
+  font-weight: 900;
+}
+
+.datePath {
+  @include transition(background-color);
+
+  margin: 10px 0;
+  background-color: $color-border;
+  width: 2px;
+  height: 15px;
+  content: '';
+}
+
+.datePathActive {
+  composes: datePath;
+  background-color: $color-accent;
+}
+
+.progress {
+  position: relative;
+  background-color: $color-accent-dark;
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.progressDates {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.progressDescriptions {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.progressDate,
+.progressDescription {
+  flex: 1 1 auto;
+  padding: 5px;
+  color: $color-text-accent;
+  font-size: $font-size-small;
+
+  @include respond-from(md) {
+    font-size: $font-size;
+  }
+}
+
+.progressBar {
+  display: flex;
+  position: relative;
+  align-items: stretch;
+  justify-content: space-between;
+  background-color: $color-white;
+}
+
+.progressItem {
+  display: flex;
+  position: relative;
+  flex: 1 1 auto;
+  align-items: center;
+  border-left: 1px solid $color-accent-dark;
+  padding: 5px;
+  color: $color-accent-dark;
+  font-size: $font-size-small;
+  box-sizing: border-box;
+
+  @include respond-from(md) {
+    font-size: $font-size;
+  }
+}
+
+.progressEmpty {
+  composes: progressItem;
+}
+
+.progressFill {
+  @include transition(width);
+
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 0;
+  background-color: $color-accent-light;
+  width: 0;
+  overflow: hidden;
+  color: $color-white;
+  box-sizing: border-box;
+}
+
+.progressFlash {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 0;
+  animation-name: progress-flash;
+  animation-duration: 1s;
+  animation-timing-function: $timing-function;
+  animation-iteration-count: infinite;
+  opacity: .5;
+  background: linear-gradient(to right, rgba($color-white, 0) 0%, $color-white 60%, rgba($color-white, 0) 100%);
+  width: 0;
+
+  @include respond-from(md) {
+    animation-duration: 2s;
+  }
+
+  @include respond-from(lg) {
+    animation-duration: 3s;
+  }
+}
+
+@keyframes progress-flash {
+  0% {
+    left: -10%;
+    width: 10%;
+  }
+
+  50% {
+    width: 50%;
+  }
+
+  80%,
+  100% {
+    left: 100%;
+    width: 10%;
+  }
+}

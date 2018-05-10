@@ -1,0 +1,304 @@
+@import '../../../styles/settings/animation';
+@import '../../../styles/settings/colors';
+@import '../../../styles/mixins/animation';
+@import '../../../styles/mixins/responsive';
+
+@import './keyframes/exchange';
+
+.block {
+  background-color: $color-primary;
+  color: $color-text-accent;
+}
+
+.slide {
+  position: relative;
+  margin-bottom: 75px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.texts {
+  position: absolute;
+  bottom: 75px;
+  width: 100%;
+}
+
+.text {
+  @include transition(opacity);
+
+  position: absolute;
+  top: 100%;
+  opacity: 0;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.textActive {
+  composes: text;
+  opacity: 1;
+}
+
+// Objects
+
+$exchange-martin-top: -35px;
+$exchange-martin-left: -50px;
+
+.exchangePos {
+  @include transition(opacity, top, left);
+
+  position: absolute;
+  margin-top: $exchange-martin-top;
+  margin-left: $exchange-martin-left;
+
+  // animation: exchange-swim 4s linear infinite;
+}
+
+
+.stackPos {
+  top: 33%;
+  left: 50%;
+}
+
+.exchange1 {
+  composes: exchangePos stackPos;
+
+  top: 65%;
+  left: 48%;
+  animation-delay: 1s;
+}
+
+.exchange2 {
+  composes: exchangePos;
+
+  top: 30%;
+  left: 75%;
+}
+
+.exchange3 {
+  composes: exchangePos;
+
+  top: 20%;
+  left: 20%;
+  animation-delay: 2s;
+}
+
+.exchange4 {
+  composes: exchangePos;
+
+  transition-delay: .4s;
+  top: 70%;
+  left: 0;
+  opacity: 0;
+}
+
+.exchange5 {
+  composes: exchangePos;
+
+  transition-delay: .2s;
+  top: 65%;
+  left: 0;
+  opacity: 0;
+}
+
+.exchange6 {
+  composes: exchangePos;
+
+  top: 60%;
+  left: 0;
+  opacity: 0;
+}
+
+.top {
+  @include transition(opacity, top);
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  margin-left: -63px;
+}
+
+.bottom {
+  @include transition(opacity, top);
+
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  opacity: 0;
+  margin-left: -71px;
+}
+
+.layer {
+  position: relative;
+  top: 25%;
+  left: 50%;
+}
+
+.userPos {
+  @include transition(opacity);
+
+  position: absolute;
+  opacity: 0;
+}
+
+.user1 {
+  composes: userPos;
+
+  top: 10%;
+  left: calc(50% + 130px);
+}
+
+.user2 {
+  composes: userPos;
+
+  top: 18%;
+  left: calc(50% + 150px);
+}
+
+.user3 {
+  composes: userPos;
+
+  top: 20%;
+  left: calc(50% + 180px);
+}
+
+.user4 {
+  composes: userPos;
+
+  top: 10%;
+  left: calc(50% + 160px);
+}
+
+.user5 {
+  composes: userPos;
+
+  top: 12%;
+  left: calc(50% + 190px);
+}
+
+.user6 {
+  composes: userPos;
+
+  top: 20%;
+  left: calc(50% + 210px);
+}
+
+.user7 {
+  composes: userPos;
+
+  top: 11%;
+  left: calc(50% + 215px);
+}
+
+.forex {
+  @include transition(opacity, transform);
+
+  position: absolute;
+  bottom: 47%;
+  left: calc(50% - 215px);
+  transform: translateX(-200px);
+  opacity: 0;
+}
+
+.layerFx {
+  position: absolute;
+  bottom: 1%;
+  left: calc(50% - 88px);
+}
+
+// Slides
+
+.slide-0 {
+  composes: slide;
+}
+
+.slide-1 {
+  composes: slide-0;
+
+  .exchange1 {
+    transition-delay: $duration;
+    top: 55%;
+    left: 50%;
+  }
+
+  .exchange2 {
+    transition-delay: $duration;
+    top: 50%;
+    left: 50%;
+  }
+
+  .exchange3 {
+    transition-delay: $duration;
+    top: 45%;
+    left: 50%;
+  }
+
+  .top {
+    transition-delay: 2 * $duration;
+    top: 20%;
+    opacity: 1;
+  }
+
+  .bottom {
+    transition-delay: 2 * $duration;
+    top: 46%;
+    opacity: 1;
+  }
+}
+
+.slide-2 {
+  composes: slide-1;
+
+  .user1,
+  .user2,
+  .user3 {
+    transition-delay: $duration;
+    opacity: 1;
+  }
+}
+
+.slide-3 {
+  composes: slide-2;
+
+  .exchange4 {
+    left: 50%;
+    opacity: 1;
+  }
+
+  .exchange5 {
+    left: 50%;
+    opacity: 1;
+  }
+
+  .exchange6 {
+    left: 50%;
+    opacity: 1;
+  }
+
+  .bottom {
+    transition-delay: 0s;
+    top: 61%;
+  }
+
+  .user4,
+  .user5 {
+    transition-delay: $duration;
+    opacity: 1;
+  }
+}
+
+.slide-4 {
+  composes: slide-3;
+
+  .forex {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .user6,
+  .user7 {
+    transition-delay: 2 * $duration;
+    opacity: 1;
+  }
+}

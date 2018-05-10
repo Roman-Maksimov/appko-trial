@@ -1,0 +1,12 @@
+.char {
+  display: none;
+  opacity: 0;
+}
+
+.charActive {
+  composes: char;
+
+  display: inline;
+  transition: opacity .1s ease;
+  opacity: 1;
+}

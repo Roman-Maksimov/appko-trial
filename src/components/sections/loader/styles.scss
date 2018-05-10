@@ -1,0 +1,239 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/spacing';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/responsive';
+
+.loader {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background: $color-primary;
+  width: 100%;
+  height: 100%;
+  color: $color-text-accent;
+}
+
+.langs {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 1;
+}
+
+.logo {
+  position: relative;
+  left: -100%;
+  transform: scaleY(.07);
+  font-family: $font-stack-title;
+  font-size: 24px;
+  font-weight: 600;
+
+  @include respond-from(md) {
+    transform: scaleY(.01);
+    font-size: 48px;
+  }
+
+  &::before {
+    position: absolute;
+    right: 0;
+    background: $color-white;
+    width: 100vw;
+    height: 100%;
+    content: '';
+  }
+}
+
+.logoActive {
+  composes: logo;
+
+  top: 0;
+  left: 0;
+  transform: scaleY(1);
+  transition: left .3s ease, transform .3s ease .6s;
+
+  &::before {
+    transition: width .3s ease .3s;
+    width: 0;
+  }
+}
+
+.logoBox {
+  background: $color-white;
+  padding: 0 5px;
+  color: $color-primary;
+}
+
+.bar {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-top: 20px;
+  background: $color-white;
+  width: 0;
+  height: 2px;
+
+  @include respond-from(md) {
+    margin-top: 50px;
+  }
+}
+
+.barActive {
+  composes: bar;
+
+  transition: width .3s ease;
+  width: 300px;
+
+  @include respond-from(md) {
+    transition: width .3s ease;
+    width: 400px;
+  }
+
+  &::before {
+    position: absolute;
+    background: $color-primary;
+    width: 0;
+    height: 100%;
+    content: '';
+  }
+}
+
+.ico {
+  opacity: 0;
+  margin-top: 20px;
+
+  @include respond-from(md) {
+    margin-top: 50px;
+  }
+}
+
+.icoActive {
+  composes: ico;
+
+  transition: opacity .3s ease;
+  opacity: 1;
+}
+
+@keyframes scroll {
+  from,
+  to {
+    top: 0;
+  }
+
+  50% {
+    top: 24px;
+  }
+}
+
+@keyframes scroll-arrow {
+  from,
+  to {
+    top: 48px;
+    opacity: 1;
+  }
+
+  50% {
+    top: 52px;
+    opacity: .5;
+  }
+}
+
+.scroll {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  opacity: 0;
+  margin-left: -8px;
+  border: 2px solid $color-white;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 16px;
+  height: 40px;
+
+  &::before {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-radius: 6px;
+    background: $color-white;
+    width: 12px;
+    height: 16px;
+    content: '';
+  }
+
+  &::after {
+    position: absolute;
+    top: 48px;
+    left: 2px;
+    border-top: 8px solid $color-white;
+    border-right: 6px solid transparent;
+    border-bottom: 0;
+    border-left: 6px solid transparent;
+    width: 0;
+    height: 0;
+    content: '';
+  }
+}
+
+.scrollActive {
+  composes: scroll;
+
+  transition: opacity 1s ease;
+  opacity: 1;
+
+  &::before {
+    animation: scroll 1.5s infinite linear .5s;
+  }
+
+  &::after {
+    animation: scroll-arrow 1s infinite linear .5s;
+  }
+}
+
+.loaderActive {
+  composes: loader;
+
+  transition: height .3s ease .3s;
+  height: 400px;
+
+  @include respond-height(md) {
+    height: 600px + $header-height;
+  }
+
+  .langs {
+    transition: opacity .3s ease;
+    opacity: 0;
+  }
+
+  .logoActive {
+    top: -50%;
+    transition: top .3s ease;
+  }
+
+  .barActive {
+    transition: width .3s ease;
+    width: 100%;
+
+    &::before {
+      transition: width .3s ease .3s;
+      width: 100%;
+    }
+  }
+
+  .ico {
+    transition: opacity .3s ease;
+    opacity: 0;
+  }
+
+  .scrollActive {
+    bottom: -50px;
+    opacity: 0;
+    transition-property: bottom, opacity;
+    transition-duration: .3s;
+    transition-timing-function: ease;
+  }
+}

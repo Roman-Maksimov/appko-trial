@@ -1,0 +1,98 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/responsive';
+
+$step-height: 200px;
+
+.block {
+  background-color: $color-background;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 50px;
+
+  @include respond-from(md) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.step {
+  position: relative;
+  flex: 1 1 auto;
+  margin-bottom: 50px;
+  margin-left: 65px;
+  border-left: 3px solid $color-accent;
+  padding-left: 20px;
+
+  @include respond-from(md) {
+    flex-basis: 20%;
+    margin-bottom: 0;
+    margin-left: 48px;
+    border-top: 3px solid $color-accent;
+    border-left: 0;
+    padding-top: 50px;
+    padding-left: 0;
+    height: $step-height;
+
+    &::before {
+      position: absolute;
+      top: 22px;
+      left: -59px;
+      transform: rotate(-45deg);
+      border-top: 3px solid $color-accent;
+      width: 71px;
+      height: 1px;
+      content: '';
+    }
+
+    @for $i from 2 through 5 {
+      &:nth-child(#{$i}) {
+        height: $step-height + ($i - 1) * 50px;
+      }
+    }
+  }
+}
+
+.amount {
+  position: absolute;
+  right: 100%;
+  margin-right: 20px;
+  font-family: $font-stack-title;
+  font-weight: 900;
+
+  @include respond-from(md) {
+    right: auto;
+    bottom: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: $font-size-small;
+
+  @include respond-from(lg) {
+    font-size: $font-size;
+  }
+
+  li {
+    margin-bottom: 10px;
+
+    &:nth-child(even) {
+      color: $color-accent;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

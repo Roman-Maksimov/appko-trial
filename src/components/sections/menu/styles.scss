@@ -1,0 +1,123 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/animation';
+
+.panel {
+  padding: 80px 20px 20px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.userAvatar {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  background: url('/img/team/default.png') 0 0 no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+.title {
+  @include transition(color);
+
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  color: $color-text;
+  font-family: $font-stack-title;
+
+  &:hover {
+    color: $color-accent-light;
+  }
+
+  &:active {
+    color: $color-accent-dark;
+  }
+}
+
+.titleActive {
+  composes: title;
+  color: $color-accent;
+}
+
+.titleDisabled {
+  composes: title;
+  color: $color-text-second;
+}
+
+.titleDoing {
+  composes: titleDisabled;
+  animation: title-doing 1s ease infinite;
+}
+
+.titleUC {
+  composes: title;
+  display: none;
+
+  &::before {
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    margin-left: -26px;
+    background: url('/img/under-construction-small.png') no-repeat 0 0;
+    background-size: cover;
+    width: 16px;
+    height: 16px;
+    content: '';
+  }
+}
+
+@keyframes title-doing {
+  0%,
+  50%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin-bottom: 10px;
+  }
+}
+
+.menuUser {
+  composes: menu;
+
+  position: relative;
+  padding-bottom: 30px;
+
+  .title {
+    font-weight: 600;
+  }
+
+  &::after {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -25px;
+    background-color: $color-accent;
+    width: 50px;
+    height: 3px;
+    content: '';
+  }
+}

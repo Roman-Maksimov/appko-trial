@@ -1,0 +1,71 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/animation';
+@import '../../../styles/mixins/responsive';
+
+$background: #222528;
+
+.block {
+  background-color: $background;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  color: $color-text-accent;
+
+  @include respond-height(md) {
+    padding-top: 150px;
+    padding-bottom: 150px;
+  }
+}
+
+.content {
+  text-align: center;
+}
+
+.separator {
+  position: relative;
+  margin: 30px auto;
+  background: $color-white;
+  width: 50px;
+  height: 2px;
+
+  @include respond-height(md) {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100px;
+  }
+}
+
+.socials {
+  a {
+    display: inline-block;
+    margin: 0 10px 10px;
+  }
+}
+
+// scss-lint:disable ImportantRule
+.icon {
+  @include transition(background-color, color);
+
+  composes: pe-bg pe-2x from global;
+
+  &:hover {
+    background-color: $color-white !important;
+    color: $background !important;
+  }
+}
+// scss-lint:enable ImportantRule
+
+.facebook {
+  composes: icon;
+  composes: pe-so-facebook from global;
+}
+
+.vk {
+  composes: icon;
+  composes: pe-so-vk from global;
+}
+
+.github {
+  composes: icon;
+  composes: pe-so-github from global;
+}

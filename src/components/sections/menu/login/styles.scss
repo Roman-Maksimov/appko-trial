@@ -1,0 +1,19 @@
+@import '../../../../styles/settings/colors';
+
+.login {
+  padding-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+}
+
+.remember {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.error {
+  margin: 0 0 20px;
+  color: $color-error;
+}

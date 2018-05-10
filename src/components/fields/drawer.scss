@@ -1,0 +1,92 @@
+@import '../../styles/settings/colors';
+@import '../../styles/settings/z-index';
+@import '../../styles/mixins/animation';
+@import '../../styles/mixins/responsive';
+
+$width-md: 240px;
+$width-lg: 300px;
+
+.wrapper {
+  position: relative;
+  z-index: $drawer-level;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateY(-100%);
+  transition: opacity $duration $timing-function, transform 0s linear $duration;
+  opacity: 0;
+  background-color: rgba($color-accent, .7);
+}
+
+.overlayActive {
+  composes: overlay;
+
+  transform: translateY(0);
+  transition: opacity $duration $timing-function;
+  opacity: 1;
+}
+
+.root {
+  @include transition(left, right);
+
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: $color-white;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+  @include respond-from(md) {
+    width: $width-md;
+  }
+
+  @include respond-from(lg) {
+    width: $width-lg;
+  }
+
+  &.left {
+    left: -102%;
+    box-shadow: 2px 0 2px $color-accent;
+
+    @include respond-from(md) {
+      left: -$width-md - 3px;
+    }
+
+    @include respond-from(lg) {
+      left: -$width-lg - 3px;
+    }
+  }
+
+  &.right {
+    right: -102%;
+    box-shadow: -2px 0 2px $color-accent;
+
+    @include respond-from(md) {
+      right: -$width-md - 3px;
+    }
+
+    @include respond-from(lg) {
+      right: -$width-lg - 3px;
+    }
+  }
+}
+
+.rootActive {
+  composes: root;
+
+  &.left {
+    left: 0;
+  }
+
+  &.right {
+    right: 0;
+  }
+}

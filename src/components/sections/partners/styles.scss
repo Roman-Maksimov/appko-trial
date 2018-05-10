@@ -1,0 +1,49 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/mixins/animation';
+@import '../../../styles/mixins/responsive';
+
+$background: #f4f6f7;
+$size-sm: 100px;
+$size-md: 226px;
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  @include transition(opacity);
+
+  opacity: .8;
+  width: $size-sm;
+  height: $size-sm;
+
+  @include respond-from(md) {
+    width: $size-md;
+    height: $size-md;
+  }
+}
+
+.partner {
+  @include transition(background-color);
+
+  flex: 0 1 $size-sm;
+  margin: 10px;
+  background-color: $background;
+  cursor: pointer;
+  text-align: center;
+
+  @include respond-from(md) {
+    flex-basis: $size-md;
+  }
+
+  &:hover {
+    background-color: $color-white;
+
+    .img {
+      opacity: 1;
+    }
+  }
+}

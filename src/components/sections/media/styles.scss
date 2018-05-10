@@ -1,0 +1,31 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/responsive';
+
+.block {
+  background-color: $color-background;
+}
+
+.img {
+  margin: 20px auto;
+  background: url('/img/under-construction-big.png') no-repeat 0 0;
+  background-size: cover;
+  width: 128px;
+  height: 128px;
+
+  @include respond-from(md) {
+    width: 256px;
+    height: 256px;
+  }
+}
+
+.text {
+  text-align: center;
+  letter-spacing: 8px;
+  font-family: $font-stack-title;
+  font-size: $font-size-small-title;
+
+  @include respond-from(md) {
+    font-size: $font-size-title;
+  }
+}

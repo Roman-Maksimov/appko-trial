@@ -1,0 +1,36 @@
+@import '../../../../styles/settings/colors';
+
+$width: 30px;
+$height: 20px;
+$head-size: 15px;
+
+.root {
+  position: relative;
+  transform: perspective(300px) rotate3d(-2, -4, 1, 60deg);
+  transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  width: $width;
+  height: $height + $head-size;
+}
+
+.body {
+  position: absolute;
+  bottom: 0;
+  border-top-left-radius: $height;
+  border-top-right-radius: $height;
+  background-color: $color-accent;
+  width: $width;
+  height: $height;
+
+  &::before {
+    position: absolute;
+    top: -$head-size;
+    left: 50%;
+    margin-left: -$head-size / 2;
+    border-radius: 50%;
+    background-color: $color-accent;
+    width: $head-size;
+    height: $head-size;
+    content: '';
+  }
+}

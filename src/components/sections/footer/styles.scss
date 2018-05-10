@@ -1,0 +1,84 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/animation';
+@import '../../../styles/mixins/responsive';
+
+$background: #1b1e20;
+$border: #313646;
+
+.block {
+  border-top: 1px solid $border;
+  background-color: $background;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: $color-text-accent;
+}
+
+.content {
+  text-align: center;
+
+  @include respond-from(md) {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.copyrights {
+  color: $color-text-second;
+  font-size: 15px;
+
+  @include respond-from(md) {
+    flex: 0 1 auto;
+  }
+}
+
+.socials {
+  margin-bottom: 20px;
+
+  @include respond-from(md) {
+    flex: 0 1 auto;
+    margin-bottom: 0;
+  }
+
+  a {
+    display: inline-block;
+    margin: 0 5px;
+  }
+}
+
+.icon {
+  @include transition(color);
+
+  color: $color-accent-light;
+}
+
+.facebook {
+  composes: icon;
+  composes: pe-so-facebook pe-color from global;
+}
+
+.vk {
+  composes: icon;
+  composes: pe-so-vk pe-color from global;
+}
+
+.github {
+  composes: icon;
+  composes: pe-so-github from global;
+
+  color: lighten($color-primary-light, 20);
+}
+
+a {
+  .github {
+    color: lighten($color-primary-light, 20);
+  }
+}
+
+a:hover {
+  .icon {
+    color: $color-text-accent;
+  }
+}

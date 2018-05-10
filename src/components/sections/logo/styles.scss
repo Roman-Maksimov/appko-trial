@@ -1,0 +1,22 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/responsive';
+
+.logo {
+  display: inline-block;
+  position: relative;
+  color: $color-text-accent;
+  font-family: $font-stack-title;
+  font-size: $font-size-title;
+  font-weight: 600;
+
+  @include respond-height(md) {
+    font-size: nth($heading-sizes, 3);
+  }
+}
+
+.box {
+  background: $color-white;
+  padding: 0 5px;
+  color: $color-primary;
+}

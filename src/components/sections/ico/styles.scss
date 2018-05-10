@@ -1,0 +1,54 @@
+@import '../../../styles/settings/colors';
+@import '../../../styles/settings/typography';
+@import '../../../styles/mixins/responsive';
+
+.ico {
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  font-size: $font-size;
+  font-weight: 400;
+
+  @include respond-height(md) {
+    font-size: $font-size-big;
+  }
+}
+
+.soon {
+  margin-bottom: 10px;
+}
+
+.input {
+  // background-color: $color-primary;
+  width: 140px;
+}
+
+.button {
+  font-size: $font-size-small;
+
+  @include respond-from(md) {
+    font-size: $font-size;
+  }
+}
+
+.promise {
+  margin-top: 10px;
+  font-size: $font-size-small;
+
+  @include respond-height(md) {
+    font-size: $font-size;
+  }
+}
+
+.done {
+  height: 70px;
+  text-transform: uppercase;
+  line-height: 70px;
+  color: $color-accent;
+  font-size: $font-size;
+  font-weight: 300;
+}
+
+.field {
+  height: 70px;
+}

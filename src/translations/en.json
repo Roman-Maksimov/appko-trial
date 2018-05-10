@@ -1,0 +1,278 @@
+{
+  "menu": {
+    "signup": "Sign Up",
+    "login": "Log In",
+    "logout": "Log Out",
+    "account": "Account",
+    "whitepaper": "White Paper",
+    "bounty": "Bounty"
+  },
+  "signup": {
+    "email": "E-mail",
+    "password": "Password",
+    "password_repeat": "Confirm Password",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "button": "Sign up",
+    "submitting": "Signing up...",
+    "errors": {
+      "required": "The field is required",
+      "invalid_email": "Invalid e-mail",
+      "invalid_password": "Password must be not less than 6 symbols",
+      "invalid_password_repeat": "Invalid password",
+      "authorized": "You are already logged in. Please, log out before the registration.",
+      "exist": "The account has been already signed up earlier."
+    }
+  },
+  "login": {
+    "email": "E-mail",
+    "password": "Password",
+    "remember": "remember me",
+    "button": "Log in",
+    "submitting": "Logging in...",
+    "errors": {
+      "authorized": "You are already logged in",
+      "incorrect": "Incorrect email or password"
+    }
+  },
+  "intro": [
+    "THE BIGGEST WORLD <span>PROVIDER</span>",
+    "OF CRYPTOCURRENCY <span>LIQUIDITY</span>",
+    "FOR <span>FUNDS</span>, <span>BROKERS</span>",
+    "AND <span>INDIVIDUAL</span> INVESTORS"
+  ],
+  "ico": {
+    "soon": "ICO starting soon",
+    "label": "Enter your E-mail",
+    "button": "TO WHITELIST",
+    "promise": "we will notify you",
+    "done": "E-mail has been registered",
+    "errors": {
+      "invalid": "Invalid e-mail",
+      "exists": "The e-mail has been registered earlier",
+      "unknown": "Something went wrong. Check the inputted e-mail and try again"
+    }
+  },
+  "about": {
+    "title": "ABOUT CryptoSTOCK",
+    "subtitle": "About Us",
+    "text": {
+      "aggregator": "CryptoSTOCK is the biggest aggregator and provider of liquidity for institutional market participants and for individual traders.",
+      "broker": "Broker service allows full range of trading operations using convenient, familiar, proven over the years tools.",
+      "analytics": "Analytical service allows to make the deep technical and fundamental analyze directly on the platform."
+    },
+    "spinner": {
+      "aggregator": "Aggregator",
+      "broker": "Broker",
+      "analytics": "Analytics"
+    }
+  },
+  "date": {
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "when": "WHEN",
+    "end": "There are no future scheduled events yet",
+    "events": {
+      "early_bird": {
+        "title": "Early Bird",
+        "description": "Private pre-sale for cryptofunds and brokers"
+      },
+      "exchange": {
+        "title": "Listing",
+        "description": "Public token sale on exchange"
+      },
+      "ico": {
+        "title": "ICO",
+        "description": "Public token sale"
+      }
+    }
+  },
+  "features": {
+    "title": "Key Features",
+    "subtitle": "Our Products",
+    "apply": "APPLY",
+    "aggregate": {
+      "title": "Liquidity aggregation",
+      "text": "CryptoStock merges liquidity from all legal cryptocurrency exchanges of the world and also it can generate it's own one. Owing to unique aggregating and routing algorithms, the reliable system can executing orders at the best price and и minimizing slippages."
+    },
+    "underwriting": {
+      "title": "ICO Underwriting",
+      "text": "CryptoStock provides full range of services for ICO underwriting."
+    },
+    "liquidity": {
+      "title": "Providing tokens liquidity",
+      "text": "Many companies face the problem of provision of their tokens' liquidity. Using private and aggregate liquidity CryptoStock is able to support such tokens, and to bring them to self-sufficiency"
+    },
+    "broker": {
+      "title": "Broker services",
+      "text": "CryptoStock provides full range of broker services for individual traders so as for institutional market participants. Investors will be armed with all the necessary tools including MetaTrader 4 and 5 terminals."
+    },
+    "derivatives": {
+      "title": "Derivative trade instruments",
+      "text": "Powerful and flexible system provides an access to the existing trade pairs, which are quoting on different exchanges and ables to create our own trading instruments by combining any cryptocurrency and fiat pairs."
+    },
+    "analytics": {
+      "title": "Analytics",
+      "text": "To improve their trade strategies our clients can use unique analytical complex that helps choose the best suitable trading instruments, define the best moment for the trade execution and to make the transaction."
+    }
+  },
+  "how": {
+    "title": "How It Works",
+    "subtitle": "Concept",
+    "exchange": "EXCHANGE",
+    "web": "WEB",
+    "terminals": "Terminals",
+    "api": "API",
+    "text": [
+      "Each exchange works separately",
+      "CryptoStock combines all the exchanges and aggregate their liquidity",
+      "Investors have an access to the aggregated liquidity",
+      "The more exchanges connected, the more liquidity",
+      "Connection to the Forex liquidity provides a possibility to quote cryptocurrency with any fiat currency"
+    ]
+  },
+  "roadmap": {
+    "title": "Roadmap",
+    "subtitle": "Our Plan",
+    "steps": [
+      [
+        "Finalise the aggregator development",
+        "Integration with the biggest cryptoexchanges"
+      ],
+      [
+        "Integration with MT4, MT5",
+        "Receiving a FSA licence",
+        "Providing of the broker services",
+        "Services for the ICO underwriting",
+        "Services for the tokens liquidity provision"
+      ],
+      [
+        "Integration with the all exchanges",
+        "Bridge CryptoStock and top world stock exchanges",
+        "Provision of a liquidity level"
+      ],
+      [
+        "Extending of the cryptocurrency exchanges network",
+        "Extending of the analytical instruments"
+      ],
+      [
+        "Extending of the cryptocurrency exchanges network",
+        "Provision of a hedge-fund"
+      ]
+    ]
+  },
+  "details": {
+    "title": {
+      "tokens": "Tokens Allocation",
+      "funds": "Funds Allocation",
+      "description": "ICO Details"
+    },
+    "investors": "Investors",
+    "team": "Team",
+    "reserve": "Reserve fund",
+    "liquidity": "Liquidity pool",
+    "bounty": "Bounty & advisors",
+    "development": "Development",
+    "infrastructure": "Infrastructure",
+    "marketing": "Marketing",
+    "legal": "Legal",
+    "other": "Other",
+    "description": [
+      {
+        "title": "Token name",
+        "value": "CSTK"
+      },
+      {
+        "title": "Blockchain platform",
+        "value": "Ethereum"
+      },
+      {
+        "title": "Token standard",
+        "value": "ERC 20"
+      },
+      {
+        "title": "Regulation",
+        "value": "Unsold during the ICO tokens will be destroyed. The emission of additional tokens is excluded."
+      },
+      {
+        "title": "Price of 1 token",
+        "value": "$1"
+      },
+      {
+        "title": "Minimum purchase limit",
+        "value": "10 tokens"
+      },
+      {
+        "title": "Maximum purchase limit",
+        "value": "No"
+      }
+    ]
+  },
+  "demo": {
+    "title": "DEMO",
+    "subtitle": "Try it",
+    "text": "To see how the liquidity can be aggregated you can get access to our simplified demonstration engine",
+    "label": "Enter your E-mail",
+    "button": "GET ACCESS",
+    "done": "Open the DEMO",
+    "errors": {
+      "invalid": "Invalid e-mail",
+      "duplicate": "The e-mail has been registered earlier. We have sent you the link to the demo again.",
+      "unknown": "Something went wrong. Check the inputted e-mail and try again"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "FAQ",
+    "issues": [
+      {
+        "question": "When the ICO is starting?",
+        "answer": "The tentative date of the launch of ICO - December 2017. The exact date will be announced soon."
+      },
+      {
+        "question": "What is the minimum purchase limit?",
+        "answer": "During the ICO the price for 1 CSTK will be 1.00 USD. Minimum purchase limit for all payment types is 10 USD."
+      },
+      {
+        "question": "How to buy tokens?",
+        "answer": "The sale will take place by money transfer to the address of the smart contract. Detailed instructions will be provided immediately prior to ICO."
+      },
+      {
+        "question": "What cryptocurrencies do you accept?",
+        "answer": "Payments will be accepted at ETH and BTC."
+      },
+      {
+        "question": "What kind of yield you can expect?",
+        "answer": "Taking into account the planned growth in the number of investors and of the capital turnover, profitability expected is quite high. However, the investor should always remember about all kinds of force majeure and unpredictable market factors that may affect quarterly or annual profitability."
+      },
+      {
+        "question": "When I get the CSTK tokens?",
+        "answer": "Information will be announced before the beginning of the ICO."
+      },
+      {
+        "question": "Due to what it is expected to rise in the price of the token?",
+        "answer": "Capital, which will be collected during the round of financing, the growth of capitalization in consequence of the increase in client base and volume of ongoing trading operations and the provision of additional services will be the main formative factors of the exchange rate CSTK, when it becomes available on cryptocurrency exchanges."
+      },
+      {
+        "question": "Why is it more profitable than to trade independently on exchange?",
+        "answer": "CryptoStock merges liquidity from all legal cryptocurrency exchanges of the world and also it can generate it's own one. Owing to unique aggregating and routing algorithms, the reliable system can executing orders at the best price and и minimizing slippages."
+      },
+      {
+        "question": "Who can participate in the ICO?",
+        "answer": "In the public token sale can participate everybody, except for citizens of China, South Korea, United States, and of territories under their control."
+      }
+    ]
+  },
+  "partners": {
+    "title": "OUR PARTNERS"
+  },
+  "media": {
+    "title": "MEDIA",
+    "text": "UNDER CONSTRUCTION"
+  },
+  "footer": {
+    "copyrights": "2017 © CryptoStock. All Rights Reserved."
+  }
+}

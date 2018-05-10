@@ -1,0 +1,164 @@
+@import '../../styles/settings/colors';
+@import '../../styles/mixins/animation';
+@import '../../styles/mixins/responsive';
+
+$arrow-size: 40px;
+$progress-height: 2px;
+$content-change-duration: .7s;
+
+.sliderContainer {
+  position: relative;
+  margin: 0 0 $arrow-size + 20px;
+
+  @include respond-from(md) {
+    margin: 0 $arrow-size + 20px;
+  }
+}
+
+.root {
+  margin: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+.slides {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.slidesAnimation {
+  @include transition(left);
+
+  composes: slides;
+}
+
+.slide {
+  flex: 1 1 1px;
+}
+
+.arrow {
+  @include transition(background-color);
+
+  composes: material-icons from global;
+
+  position: absolute;
+  bottom: -$arrow-size - 20px;
+  z-index: 1;
+  background-color: $color-primary-light;
+  cursor: pointer;
+  width: $arrow-size;
+  height: $arrow-size;
+  text-align: center;
+  font-size: $arrow-size;
+
+  @include respond-from(md) {
+    top: 50%;
+    margin-top: -$arrow-size / 2;
+  }
+
+  &:hover {
+    background-color: $color-accent;
+  }
+
+  &:active {
+    background-color: $color-accent-light;
+  }
+}
+
+.arrowBack {
+  composes: arrow;
+  left: 0;
+
+  @include respond-from(md) {
+    left: -$arrow-size - 20px;
+  }
+}
+
+.arrowNext {
+  composes: arrow;
+  right: 0;
+
+  @include respond-from(md) {
+    right: -$arrow-size - 20px;
+  }
+}
+
+.arrowFinish {
+  composes: arrowNext;
+}
+
+.pages {
+  position: absolute;
+  bottom: -$arrow-size - 15px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+
+  @include respond-from(md) {
+    bottom: -40px;
+  }
+}
+
+.page {
+  @include transition(background-color);
+
+  display: inline-block;
+  margin: 0 5px;
+  background-color: $color-white;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+
+  @include respond-from(md) {
+    height: 7px;
+  }
+
+  &:hover {
+    background-color: $color-accent-light;
+  }
+
+  &:active {
+    background-color: $color-accent-dark;
+  }
+}
+
+.pageActive {
+  composes: page;
+  background-color: $color-accent;
+}
+
+.progress {
+  position: absolute;
+  bottom: -$arrow-size - $progress-height;
+  left: 0;
+  padding: 0 $arrow-size + 10;
+  width: 100%;
+  height: $progress-height;
+  box-sizing: border-box;
+
+  @include respond-from(md) {
+    position: relative;
+    bottom: 0;
+    margin: auto;
+    width: 300px;
+  }
+}
+
+.progressBack {
+  background-color: $color-accent;
+  height: 100%;
+  overflow: hidden;
+}
+
+.progressPointer {
+  @include transition(left);
+
+  position: relative;
+  left: 0;
+  margin-left: -15px;
+  background: linear-gradient(to right, rgba($color-white, 0) 0%, $color-white 50%, rgba($color-white, 0) 100%);
+  width: 30px;
+  height: 100%;
+}
